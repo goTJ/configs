@@ -1,0 +1,20 @@
+#! /bin/sh
+
+TPL_PATH="$HOME/.template"
+
+if [ -z $(which vim) ]; then
+        echo "Can't find VIM!\n";
+	exit
+fi
+
+suffix=$(echo "$1" | sed s/.*\\.//)
+
+if [ -f "$1" ]; then
+	vim $1
+elif [ -f "$TPL_PATH/tpl.$suffix" ]; then
+	cp $TPL_PATH/tpl.$suffix $1
+	if [ `head -c 2 $TPL_PATH/tpl.$suffix` == '#!' ]; then
+		chmod +x $1
+	fi
+	vim $1
+fi

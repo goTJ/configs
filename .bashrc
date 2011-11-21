@@ -1,21 +1,16 @@
 umask 022
 
-export LC_ALL="zh_TW.UTF-8"
-export LANG="zh_TW.UTF-8"
+export LC_ALL="en.UTF-8"
+export LANG="en.UTF-8"
 
 os=${OSTYPE/[^a-z]*/}
 
 case "$os" in
-"freebsd")
-	alias ls='ls -F'
-	;;
 "linux")
 	alias ls='ls --color --show-control-chars -F'
 	;;
-"solaris")
-	alias ls='ls --color --show-control-chars -F'
-	alias ping="ping -s"
-	;;
+"darwin")
+  alias ls='ls -G -F'
 esac
 
 alias la='ls -A'

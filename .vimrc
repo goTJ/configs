@@ -5,8 +5,8 @@ set nocompatible
 set wildmenu
 set backupdir=~/.tmp,.,/var/tmp/vi.recover,/tmp
 set directory=~/.tmp,/var/tmp/vi.recover,/tmp,.
-set backup		" keep a backup file
-set bs=2		" allow backspacing over everything in insert mode
+set backup  " keep a backup file
+set bs=2  " allow backspacing over everything in insert mode
 set ai
 set cin
 set ru
@@ -18,7 +18,6 @@ set hls
 set tabstop=2
 set shiftwidth=2
 set expandtab
-
 
 if has("autocmd")
 	autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc map Q ma:% s/\/\/\/\//\/\*\*\//g'a
@@ -32,6 +31,7 @@ endif
 :map L :w:mak %<
 :map U :w
 
+" VIM 6.0,
 if version >= 600
 	" set foldcolumn=2
 	" set foldmethod=syntax

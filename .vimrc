@@ -35,10 +35,8 @@ else
 endif
 
 if has("autocmd")
-	autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc map Q ma:% s/\/\/\/\//\/\*\*\//g
-'a
-	autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc map q ma:% s/\/\*\*\//\/\/\/\//g
-'a
+	autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc map Q ma:% s/\/\/\/\//\/\*\*\//g 'a
+	autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc map q ma:% s/\/\*\*\//\/\/\/\//g 'a
 	autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc set kp=man\ -S\ 3:2
 	autocmd BufRead,BufNewFile *.pl set kp=perldoc\ -f
 	autocmd BufRead,BufNewFile *.tex map L :w

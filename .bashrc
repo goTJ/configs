@@ -1,21 +1,16 @@
 umask 022
 
-export LC_ALL="zh_TW.UTF-8"
-export LANG="zh_TW.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US.UTF-8"
 
 os=${OSTYPE/[^a-z]*/}
 
 case "$os" in
-"freebsd")
-	alias ls='ls -F'
-	;;
 "linux")
 	alias ls='ls --color --show-control-chars -F'
 	;;
-"solaris")
-	alias ls='ls --color --show-control-chars -F'
-	alias ping="ping -s"
-	;;
+"darwin")
+  alias ls='ls -G -F'
 esac
 
 alias la='ls -A'
@@ -49,4 +44,8 @@ fi
 
 if [ -f /usr/local/etc/bash_completion ]; then
     . /usr/local/etc/bash_completion
+fi
+
+if [ -f /$HOME/.local_bashrc ]; then
+    . /$HOME/.local_bashrc
 fi

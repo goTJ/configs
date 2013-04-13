@@ -16,6 +16,7 @@ set viminfo='20,\"50	" read/write a .viminfo file, don't store more
 set showmatch
 set nowrap
 set hls
+
 set tabstop=2
 set shiftwidth=2
 set expandtab

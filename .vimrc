@@ -19,9 +19,19 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
-"set background=dark	" another is 'light'
 
-" VIM 6.0,
+if has("autocmd")
+	autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc map Q ma:% s/\/\/\/\//\/\*\*\//g'a
+	autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc map q ma:% s/\/\*\*\//\/\/\/\//g'a
+	autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc set kp=man\ -S\ 3:2
+	autocmd BufRead,BufNewFile *.pl set kp=perldoc\ -f
+	autocmd BufRead,BufNewFile *.tex map L :w:mak %<.pdf
+	autocmd BufRead,BufNewFile *.tex set fileencodings=big5,ucs-bom,utf-8,sjis,latin1
+endif
+
+:map L :w:mak %<
+:map U :w
+
 if version >= 600
 	" set foldcolumn=2
 	" set foldmethod=syntax
@@ -34,17 +44,6 @@ else
 	set fileencoding=taiwan
 endif
 
-if has("autocmd")
-	autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc map Q ma:% s/\/\/\/\//\/\*\*\//g 'a
-	autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc map q ma:% s/\/\*\*\//\/\/\/\//g 'a
-	autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc set kp=man\ -S\ 3:2
-	autocmd BufRead,BufNewFile *.pl set kp=perldoc\ -f
-	autocmd BufRead,BufNewFile *.tex map L :w :mak %<.pdf
-	autocmd BufRead,BufNewFile *.tex set fileencodings=big5,ucs-bom,utf-8,sjis,latin1
-endif
-
-:map L :w :mak %<
-:map U :w
 if version >= 700
 	:map <C-j> :tabnext
 	:map <C-k> :tabprev

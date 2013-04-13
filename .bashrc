@@ -45,3 +45,7 @@ fi
 if [ -f /usr/local/etc/bash_completion ]; then
     . /usr/local/etc/bash_completion
 fi
+
+if [ -f /$HOME/.local_bashrc ]; then
+    . /$HOME/.local_bashrc
+fi

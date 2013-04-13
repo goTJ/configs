@@ -6,8 +6,6 @@ set wildmenu
 set backupdir=~/.tmp,.,/var/tmp/vi.recover,/tmp
 set directory=~/.tmp,/var/tmp/vi.recover,/tmp,.
 set backup		" keep a backup file
-" set textwidth=78
-" set shiftwidth=4
 set bs=2		" allow backspacing over everything in insert mode
 set ai			" always set autoindenting on
 set cin

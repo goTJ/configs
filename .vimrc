@@ -7,7 +7,7 @@ set backupdir=~/.tmp,.,/var/tmp/vi.recover,/tmp
 set directory=~/.tmp,/var/tmp/vi.recover,/tmp,.
 set backup		" keep a backup file
 set bs=2		" allow backspacing over everything in insert mode
-set ai			" always set autoindenting on
+set ai
 set cin
 set ru
 set viminfo='20,\"50	" read/write a .viminfo file, don't store more
@@ -35,15 +35,19 @@ else
 endif
 
 if has("autocmd")
-	autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc map Q ma:% s/\/\/\/\//\/\*\*\//g'a
-	autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc map q ma:% s/\/\*\*\//\/\/\/\//g'a
+	autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc map Q ma:% s/\/\/\/\//\/\*\*\//g
+'a
+	autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc map q ma:% s/\/\*\*\//\/\/\/\//g
+'a
 	autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc set kp=man\ -S\ 3:2
 	autocmd BufRead,BufNewFile *.pl set kp=perldoc\ -f
-	autocmd BufRead,BufNewFile *.tex map L :w:mak %<.pdf
+	autocmd BufRead,BufNewFile *.tex map L :w
+:mak %<.pdf
 	autocmd BufRead,BufNewFile *.tex set fileencodings=big5,ucs-bom,utf-8,sjis,latin1
 endif
 
-:map L :w:mak %<
+:map L :w
+:mak %<
 :map U :w
 if version >= 700
 	:map <C-j> :tabnext

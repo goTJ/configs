@@ -5,55 +5,52 @@ set nocompatible
 set wildmenu
 set backupdir=~/.tmp,.,/var/tmp/vi.recover,/tmp
 set directory=~/.tmp,/var/tmp/vi.recover,/tmp,.
-set backup		" keep a backup file
-set bs=2		" allow backspacing over everything in insert mode
+set backup  " keep a backup file
+set bs=2  " allow backspacing over everything in insert mode
 set ai
 set cin
 set ru
-set viminfo='20,\"50	" read/write a .viminfo file, don't store more
+set viminfo='20,\"50  " read/write a .viminfo file, don't store more
 set showmatch
 set nowrap
-set hls
+set hls  " highlight search
 
 set tabstop=2
 set shiftwidth=2
 set expandtab
 
-"set background=dark	" another is 'light'
+if has("autocmd")
+  autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc map Q ma:% s/\/\/\/\//\/\*\*\//g'a
+  autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc map q ma:% s/\/\*\*\//\/\/\/\//g'a
+  autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc set kp=man\ -S\ 3:2
+  autocmd BufRead,BufNewFile *.pl set kp=perldoc\ -f
+  autocmd BufRead,BufNewFile *.tex map L :w:mak %<.pdf
+  autocmd BufRead,BufNewFile *.tex set fileencodings=big5,ucs-bom,utf-8,sjis,latin1
+endif
+
+:map L :w:mak %<
+:map U :w
 
 " VIM 6.0,
 if version >= 600
-	" set foldcolumn=2
-	" set foldmethod=syntax
-	set foldmethod=marker
-	"    set foldlevel=1
-	"    set foldtext=/^/=>
-	set encoding=utf-8
-	set fileencodings=utf-8,big5
+  " set foldcolumn=2
+  " set foldmethod=syntax
+  set foldmethod=marker
+  "    set foldlevel=1
+  "    set foldtext=/^/=>
+  set encoding=utf-8
+  set fileencodings=utf-8,big5
 else
-	set fileencoding=taiwan
+  set fileencoding=taiwan
 endif
 
-if has("autocmd")
-	autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc map Q ma:% s/\/\/\/\//\/\*\*\//g 'a
-	autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc map q ma:% s/\/\*\*\//\/\/\/\//g 'a
-	autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc set kp=man\ -S\ 3:2
-	autocmd BufRead,BufNewFile *.pl set kp=perldoc\ -f
-	autocmd BufRead,BufNewFile *.tex map L :w
-:mak %<.pdf
-	autocmd BufRead,BufNewFile *.tex set fileencodings=big5,ucs-bom,utf-8,sjis,latin1
-endif
-
-:map L :w
-:mak %<
-:map U :w
 if version >= 700
-	:map <C-j> :tabnext
-	:map <C-k> :tabprev
-	:map <C-n> :tabnew 
-	:hi MatchParen     term=reverse cterm=bold ctermfg=3 ctermbg=4
-	:hi Pmenu          cterm=bold ctermfg=3 ctermbg=2
-	:hi PmenuSel       cterm=bold ctermfg=1 ctermbg=2
+  :map <C-j> :tabnext
+  :map <C-k> :tabprev
+  :map <C-n> :tabnew 
+  :hi MatchParen     term=reverse cterm=bold ctermfg=3 ctermbg=4
+  :hi Pmenu          cterm=bold ctermfg=3 ctermbg=2
+  :hi PmenuSel       cterm=bold ctermfg=1 ctermbg=2
 endif
 
 :hi SpecialKey     term=bold cterm=bold ctermfg=4 guifg=Cyan

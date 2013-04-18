@@ -1,32 +1,24 @@
 syntax on
 
-set showcmd
 set nocompatible
-set wildmenu
 set backupdir=~/.tmp,.,/var/tmp/vi.recover,/tmp
 set directory=~/.tmp,/var/tmp/vi.recover,/tmp,.
 set backup  " keep a backup file
+set viminfo='20,\"50  " read/write a .viminfo file, don't store more
+set ru
+
+set showcmd
+set wildmenu
+set nowrap
+set showmatch
+set hls  " highlight search
+
 set bs=2  " allow backspacing over everything in insert mode
 set ai
 set cin
-set ru
-set viminfo='20,\"50  " read/write a .viminfo file, don't store more
-set showmatch
-set nowrap
-set hls
-
 set tabstop=2
 set shiftwidth=2
 set expandtab
-
-if has("autocmd")
-  autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc map Q ma:% s/\/\/\/\//\/\*\*\//g'a
-  autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc map q ma:% s/\/\*\*\//\/\/\/\//g'a
-  autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc set kp=man\ -S\ 3:2
-  autocmd BufRead,BufNewFile *.pl set kp=perldoc\ -f
-  autocmd BufRead,BufNewFile *.tex map L :w:mak %<.pdf
-  autocmd BufRead,BufNewFile *.tex set fileencodings=big5,ucs-bom,utf-8,sjis,latin1
-endif
 
 :map L :w:mak %<
 :map U :w
@@ -51,6 +43,15 @@ if version >= 700
   :hi MatchParen     term=reverse cterm=bold ctermfg=3 ctermbg=4
   :hi Pmenu          cterm=bold ctermfg=3 ctermbg=2
   :hi PmenuSel       cterm=bold ctermfg=1 ctermbg=2
+endif
+
+if has("autocmd")
+  autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc map Q ma:% s/\/\/\/\//\/\*\*\//g'a
+  autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc map q ma:% s/\/\*\*\//\/\/\/\//g'a
+  autocmd BufRead,BufNewFile *.c,*.cpp,*.C,*.cc set kp=man\ -S\ 3:2
+  autocmd BufRead,BufNewFile *.pl set kp=perldoc\ -f
+  autocmd BufRead,BufNewFile *.tex map L :w:mak %<.pdf
+  autocmd BufRead,BufNewFile *.tex set fileencodings=big5,ucs-bom,utf-8,sjis,latin1
 endif
 
 :hi SpecialKey     term=bold cterm=bold ctermfg=4 guifg=Cyan

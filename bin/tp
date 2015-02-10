@@ -1,0 +1,24 @@
+#!/bin/sh
+
+PROGRAM='tp';
+
+if [ $# -lt 1 ]; then
+  echo "Usage: $PROGRAM directory"
+  exit;
+fi
+
+session_name=$1
+shift
+
+case $session_name in
+  *)
+    dir=$HOME/pjc/$session_name
+    if [ ! -d $dir ]; then
+      echo "$dir doesn't exist!"
+      exit
+    fi
+    ;;
+esac
+
+cd $dir
+tmux new -AD -s $session_name

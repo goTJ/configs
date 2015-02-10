@@ -6,8 +6,9 @@ import os.path
 import shutil
 import sys
 
-FILENAME_LIST = ['.bash_profile', '.bashrc', '.screenrc', '.vimrc',
-                 'bin/vitpl', '.template']
+FILENAME_LIST = [
+  '.bash_profile', '.bashrc', '.screenrc', '.vimrc', '.pythonrc', '.template',
+  'bin/vitpl', 'bin/sp', '.tmux.conf']
 
 def main(argv):
   config_dir = os.path.abspath(os.path.dirname(argv[0]) or '.') + '/'

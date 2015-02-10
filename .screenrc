@@ -23,7 +23,7 @@
 #nethack on
 
 #defflow on # will force screen to process ^S/^Q
-deflogin on
+# deflogin on
 #autodetach off
 
 # turn visual bell on
@@ -47,8 +47,8 @@ bind ^\
 # Make them better
 bind \\ quit
 bind K kill
-bind I login on
-bind O login off
+#bind I login on
+#bind O login off
 bind } history
 
 # An example of a "screen scraper" which will launch urlview on the current

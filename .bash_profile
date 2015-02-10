@@ -4,7 +4,7 @@ PATH=$HOME/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
 export PATH
 
 # common env
-export TERM=linux
+export TERM=xterm-256color
 export USER=$LOGNAME
 export EDITOR=vim
 export PAGER=less

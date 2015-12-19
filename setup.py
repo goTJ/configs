@@ -16,16 +16,25 @@ def main(argv):
   print 'config directory: ' + config_dir
   print 'home directory: ' + home_dir
   for fn in FILENAME_LIST:
-    config_fn = config_dir + fn
-    home_fn = home_dir + fn
-    if os.path.exists(home_fn):
-      if os.path.isdir(home_fn) and not os.path.islink(home_fn):
-        shutil.rmtree(home_fn)
+    config_path = config_dir + fn
+    home_path = home_dir + fn
+
+    try:
+      os.makedirs(os.path.dirname(home_path))
+    except:
+      pass
+    else:
+      print 'Make directory: ' + os.path.dirname(home_path)
+
+    if os.path.exists(home_path):
+      print 'Delete ' + home_path
+      if os.path.isdir(home_path) and not os.path.islink(home_path):
+        shutil.rmtree(home_path)
       else:
-        os.unlink(home_fn)
-      print 'Delete ' + home_fn
-    print 'Add symlink: %s -> %s' % (config_fn, home_fn)
-    os.symlink(config_fn, home_fn)
+        os.unlink(home_path)
+
+    print 'Add symlink: %s -> %s' % (config_path, home_path)
+    os.symlink(config_path, home_path)
     
 
 if __name__ == "__main__":
